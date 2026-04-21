@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Video Landing</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#111;color:#fff}
+
+/* HERO VIDEO */
+.hero {
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+.hero video {
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.5);
+}
+
+/* HERO CONTENT */
+.hero-content {
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* BUTTON */
+.btn {
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  background:#4f46e5;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn:hover {
+  background:#22c55e;
+  transform:translateY(-3px);
+}
+
+/* PULSE */
+.pulse {
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
+
+/* SECTION */
+.section {
+  padding:60px;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  background:#f4f6f8;
+  color:#000;
+}
+
+/* CARD */
+.card {
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  transition:.3s;
+}
+.card:hover {
+  transform:scale(1.05);
+}
+
+/* FADE IN */
+.fade {
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp .8s forwards;
+}
+.fade:nth-child(2){animation-delay:.2s}
+.fade:nth-child(3){animation-delay:.4s}
+
+@keyframes fadeUp {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* IMAGE HOVER */
+.img-box {
+  position:relative;
+  width:250px;
+  overflow:hidden;
+}
+.img-box img {
+  width:100%;
+  transition:.4s;
+}
+.img-box span {
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+  opacity:0;
+  transition:.3s;
+}
+.img-box:hover img {
+  transform:scale(1.2);
+  filter:brightness(.5);
+}
+.img-box:hover span {
+  opacity:1;
+}
+
+/* LOADER */
+.preloader {
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  animation:hide 2.5s forwards;
+}
+.loader {
+  display:flex;
+  gap:6px;
+}
+.loader span {
+  width:10px;
+  height:10px;
+  background:#fff;
+  border-radius:50%;
+  animation:bounce .6s infinite alternate;
+}
+.loader span:nth-child(2){animation-delay:.2s}
+.loader span:nth-child(3){animation-delay:.4s}
+
+@keyframes bounce {
+  to { transform:translateY(-10px); }
+}
+@keyframes hide {
+  to { opacity:0; visibility:hidden; }
+}
+
+/* PARALLAX */
+.parallax {
+  height:300px;
+  background:url('https://picsum.photos/1200/600') center/cover fixed;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="loader">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- HERO VIDEO -->
+<section class="hero">
+  <video autoplay muted loop>
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <h1>Анимации + Видео 🔥</h1>
+    <p>Современный лендинг</p>
+    <button class="btn pulse">Начать</button>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="section">
+  <div class="card fade">Карточка 1</div>
+  <div class="card fade">Карточка 2</div>
+  <div class="card fade">Карточка 3</div>
+</section>
+
+<!-- IMAGE -->
+<section class="section">
+  <div class="img-box">
+    <img src="https://picsum.photos/300/200">
+    <span>Hover эффект</span>
+  </div>
+</section>
+
+<!-- PARALLAX -->
+<div class="parallax"></div>
+
+</body>
+</html>
